@@ -1,0 +1,21 @@
+name: Node 24 and Env Test
+on: [push]
+
+jobs:
+  check-node:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Check Version and Env
+        run: |
+          node -v
+          echo "Current Env: $MY_CUSTOM_VAR"
+        env:
+          MY_CUSTOM_VAR: "Node24_Activated"
